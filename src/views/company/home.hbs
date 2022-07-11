@@ -1,0 +1,18 @@
+
+<div class="row" style="margin-top: 20px;">
+         {{#each tieusu}}
+    <div class="col col-lg-3">
+        <a href="/company/InfoCompany/{{this.slug}}" style="text-decoration: none;">
+        <div class="card " style="margin-top: 5px;">
+            <img src="{{this.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text">{{this.job}}</p>
+                <p class="card-text">{{this.tieusu}}</p>
+                <p class="card-text"><small class="text-muted">{{this.date}}</small></p>
+            </div>
+        </div>
+        </a>
+    </div>
+         {{/each}}
+</div>

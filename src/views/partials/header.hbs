@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div  class="container-fluid">
+    <a class="navbar-brand" " href="#">Tiểu sử người nổi tiếng</a>
+    <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span style="  " class="navbar-toggler-icon">menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/company/save/form">Thêm nhân vật</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/authentication/create">Đăng ký</a>
+        </li> <li class="nav-item">
+          <a class="nav-link" href="/authentication">Đăng nhập</a>
+        </li>
+        </li>
+         <li class="nav-item">
+          <p class="nav-link" style="color: black;" >User : <span style="color: red;">{{user}}</span></p>
+        </li>
+
+      </ul>
+      <form class="d-flex" id="form" role="search" method="get" >
+        <input class="form-control me-2" id="input" oninput='handle()' type="search" placeholder="Search" >
+        <button class="btn btn-outline-success" id="submit" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<script> 
+   var form = document.querySelector('#form') 
+   var input = document.querySelector('#input') 
+   var submit = document.querySelector('#submit') 
+
+  function handle(e){
+    form.action=`/company/info/${input.value}`
+  }
+</script>

@@ -9,8 +9,7 @@ class Nhanvat {
         }
         tieusu.find({}).lean()
             .then(tieusu => {
-                console.log(tieusu)
-                res.render('company/home', { tieusu })
+                res.render('company/home',{tieusu})
             })
     }
     form(req, res) {
@@ -24,7 +23,6 @@ class Nhanvat {
     }
      infos(req, res) {
         const user =  account.findOne({ _id: req.params.id }).lean()
-        console.log('nnnn')
         var userName
         if (user) {
             userName = user.name
@@ -32,10 +30,8 @@ class Nhanvat {
         else {
             userName = 'user'
         }
-  tieusu.findOne({ slug: req.param('tieusu') }).lean()
+        tieusu.findOne({ _id: req.param('id') }).lean()
         .then(tieusu => {
-                var idItiem = tieusu.id || null
-                console.log(tieusu)
                 res.render('company/InfoCompany', { tieusu })
             })
     }

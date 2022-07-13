@@ -2,10 +2,10 @@
 <div class="row" style="margin-top: 20px;">
          {{#each tieusu}}
     <div class="col col-lg-3">
-        <a href="/company/InfoCompany/{{this.slug}}" style="text-decoration: none;">
+        <a href="/company/InfoCompany/{{this._id}}" style="text-decoration: none;">
         <div class="card " style="margin-top: 5px;">
             <img src="{{this.image}}" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body">   
                 <h5 class="card-title">{{this.name}}</h5>
                 <p class="card-text">{{this.job}}</p>
                 <p class="card-text">{{this.tieusu}}</p>

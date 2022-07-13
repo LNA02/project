@@ -11,5 +11,5 @@ const tieusu = new Schema({
     tieusu:String,
 });
 
-module.exports = mongoose.model('tieusu', tieusu);
+module.exports = mongoose.model('tieusus', tieusu);
 

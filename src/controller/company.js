@@ -1,42 +1,44 @@
 const tieusu = require('../modle/tieusu')
 const account = require('../modle/account')
-class Nhanvat{
-    home(req,res,next){
+class Nhanvat {
+    home(req, res, next) {
 
-        if(req.cookies){
+        if (req.cookies) {
             var user = req.cookies.user
-            res.locals.user = user            
+            res.locals.user = user
         }
-        company.find({}).lean()
-        .then(tieusu=>{
-            res.render('company/home',{tieusu})
-        })
+        tieusu.find({}).lean()
+            .then(tieusu => {
+                console.log(tieusu)
+                res.render('company/home', { tieusu })
+            })
     }
-    form(req,res){
+    form(req, res) {
         res.render('company/create')
     }
-    save(req,res,next){
+    save(req, res, next) {
         const tieusuSave = new tieusu(req.body)
-        tieusuSave.abum = tieusuSave.abum.toString().split(',')
+        console.log(req.body) 
         tieusuSave.save()
         res.redirect('/')
     }
-    async info(req,res){
-    const user = await account.findOne({id:req.cookies.userId}).lean()
-    var userName
-    if(user){
-        userName =user.name
-    }
-    else{
-        userName = 'user'
-    }
-        const tieusu = await company.findOne({slug:req.param('tieusu')}).lean()
-        var idItiem =  tieusu.id || null
-        Promise.all([tieusu,userName])
-        .then(tieusu=>{
-            res.render('company/InfoCompany',{tieusu:image[0],idItiem,tieusu:name[0],tieusu:job,tieusu:tieusu })
-        })
+     infos(req, res) {
+        const user =  account.findOne({ _id: req.params.id }).lean()
+        console.log('nnnn')
+        var userName
+        if (user) {
+            userName = user.name
+        }
+        else {
+            userName = 'user'
+        }
+  tieusu.findOne({ slug: req.param('tieusu') }).lean()
+        .then(tieusu => {
+                var idItiem = tieusu.id || null
+                console.log(tieusu)
+                res.render('company/InfoCompany', { tieusu })
+            })
     }
 
 }
-module.exports = new Nhanvat
+module.exports = new Nhanvat()

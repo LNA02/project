@@ -20,7 +20,7 @@ app.set("views", path.join(__dirname, '/views'));
 
 
 try{
-  mongoose.connect('mongodb+srv://leeanh:25062002bin@cluster0.q0bjy.mongodb.net/?retryWrites=true&w=majority')
+  mongoose.connect('mongodb+srv://leeanh:25062002bin@cluster0.q0bjy.mongodb.net/test?retryWrites=true&w=majority')
   console.log('Connect Success')
 }
 catch(error){

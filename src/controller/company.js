@@ -20,6 +20,26 @@ class Nhanvat {
         console.log(req.body) 
         tieusuSave.save()
         res.redirect('/')
+    } 
+    delete(req, res, next) {
+        tieusu.deleteOne({_id:req.params.id}).lean()
+        .then( ()=> {
+            // res.send('delete thành cong ',req.params.id)
+            console.log('t c')
+            res.redirect('/')
+        })
+    }
+    getUpdate(req,res,next){
+        tieusu.findOne({_id:req.params.id}).lean()
+        .then((tieusu)=>{
+            res.render('company/update',{tieusu})
+        })
+    }
+    setUpdate(req,res,next){
+        tieusu.updateOne({_id:req.params.id},req.body).lean()
+        .then(()=>{
+            res.redirect('/')
+        })
     }
      infos(req, res) {
         const user =  account.findOne({ _id: req.params.id }).lean()
@@ -27,7 +47,7 @@ class Nhanvat {
         if (user) {
             userName = user.name
         }
-        else {
+        else { 
             userName = 'user'
         }
         tieusu.findOne({ _id: req.param('id') }).lean()
